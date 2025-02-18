@@ -1,7 +1,5 @@
 # 개요
-안녕하세요. 김부민 입니다.
-제가 진행한 프로젝트와 생각을 정리하는 공간입니다.
-* 페이지 링크: [boominkim0.github.io](https://boominkim0.github.io)
+비트코인 살껄
 
 ## 개발
 * Nuxt3로 개발했습니다.

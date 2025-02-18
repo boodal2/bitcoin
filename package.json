@@ -1,5 +1,5 @@
 {
-  "name": "boom.dev",
+  "name": "boodal2-bitcoin",
   "version": "0.0.2",
   "scripts": {
     "build": "nuxt build",
