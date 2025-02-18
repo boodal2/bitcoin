@@ -20,7 +20,7 @@
 
 			<UFormGroup
 				label="매달 얼마씩 살껄"
-				:help="`총 ￦${formatKoreanCurrency(input * rows.length)} 주고 살껄`"
+				:help="`총 ${rows.length}개월간 ${formatKoreanCurrency(input * rows.length)}원 주고 살껄`"
 				class="mb-5"
 			>
 				<UInput
@@ -32,31 +32,34 @@
 					</template>
 				</UInput>
 			</UFormGroup>
-
-			<UTable
-				:columns="columns"
-				:rows="rows"
-				class="my-5"
-			>
-				<template #caption>
-					<caption class="text-sm text-gray-500 dark:text-gray-400 my-5">
-						라고 할때 샀다면 비트코인 ₿{{ totalBtc }}개 보유 (약 ￦{{ formatKoreanCurrency(totalBtc * nowBitcoinPrice) }})
-					</caption>
-				</template>
-				<!-- KRW 쉼표 3자리 단위 -->
-				<template #krw-data="{ row }">
-					￦{{ row.krw.toLocaleString() }}
-				</template>
-				<!-- DCA 쉼표 3자리 단위 -->
-				<template #dca-data="{ row }">
-					￦{{ row.dca.toLocaleString() }}
-				</template>
-				<!-- BTC 소수점 8자리까지 표시 -->
-				<template #btc-data="{ row }">
-					₿{{ row.btc }}
-				</template>
-			</UTable>
 		</div>
+		<UTable
+			:columns="columns"
+			:rows="rows"
+			class=" max-w-lg mb-5 px-3 mx-auto "
+		>
+			<template #caption>
+				<caption class="text-sm text-gray-500 dark:text-gray-400 mb-3 text-left">
+					라고 할때 샀다면 비트코인 ₿{{ totalBtc }}개 보유 (약 ￦{{ formatKoreanCurrency(totalBtc * nowBitcoinPrice) }})
+				</caption>
+			</template>
+			<template #date-data="{ row }">
+				<!-- 2015-01-01 -> 15년 1월 -->
+				{{ row.date.slice(2, 7).replace('-', '년 ') }}월
+			</template>
+			<!-- KRW 쉼표 3자리 단위 -->
+			<template #krw-data="{ row }">
+				￦{{ row.krw.toLocaleString() }}
+			</template>
+			<!-- DCA 쉼표 3자리 단위 -->
+			<template #dca-data="{ row }">
+				￦{{ row.dca.toLocaleString() }}
+			</template>
+			<!-- BTC 소수점 8자리까지 표시 -->
+			<template #btc-data="{ row }">
+				₿{{ row.btc }}
+			</template>
+		</UTable>
 	</main>
 </template>
 
@@ -71,17 +74,17 @@ const columns = [
 	},
 	{
 		key: 'krw',
-		label: '원화(KRW)',
+		label: '비트코인 1개 가격(KRW)',
+		sortable: true,
+	},
+	{
+		key: 'btc',
+		label: '수량(BTC)',
 		sortable: true,
 	},
 	{
 		key: 'dca',
 		label: '투자금액',
-	},
-	{
-		key: 'btc',
-		label: '비트코인(BTC)',
-		sortable: true,
 	},
 ];
 const input = ref(100000);
@@ -163,3 +166,9 @@ const formatKoreanCurrency = (amount: number) => {
 	return result.trim() || '0원';
 };
 </script>
+
+<style scoped>
+main {
+	overflow-x: hidden;
+}
+</style>
