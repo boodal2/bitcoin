@@ -1,8 +1,11 @@
 export default defineNuxtConfig({
 	site: {
 		// production URL
-		// url: 'https://boominkim0.github.io',
-		// name: 'Boomin Kim',
+		url: 'https://boodal2.github.io',
+		name: 'boodal2',
+	},
+	colorMode: {
+		preference: 'light',
 	},
 	content: {
 		documentDriven: true,
