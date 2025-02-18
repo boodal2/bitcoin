@@ -1,0 +1,38 @@
+{
+  "name": "boom.dev",
+  "version": "0.0.2",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "deploy": "nuxt generate && echo '' > .output/public/.nojekyll && gh-pages -d .output/public --dotfiles"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@nuxt/content": "^2.13.2",
+    "@nuxt/fonts": "0.10.2",
+    "@nuxt/image": "^1.8.0",
+    "@nuxt/ui": "^2.18.4",
+    "@nuxtjs/device": "^3.2.4",
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@nuxtjs/sitemap": "^6.1.0",
+    "nuxt": "^3.13.0",
+    "nuxt-og-image": "^3.0.2",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^0.5.7",
+    "eslint": "^9.10.0",
+    "gh-pages": "^6.1.1",
+    "typescript": "5.5.4",
+    "vite-plugin-eslint2": "^4.4.1",
+    "wrangler": "^3.78.9"
+  }
+}
