@@ -3,7 +3,7 @@ const production = process.env.NODE_ENV === 'production';
 export default defineNuxtConfig({
 	site: {
 		// production URL
-		url: 'https://boodal2.github.io/github.io',
+		url: 'https://boodal2.github.io/bitcoin',
 		name: 'boodal2',
 	},
 	colorMode: {
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
 	},
 
 	app: {
-		baseURL: production ? '/github.io/' : '',
+		baseURL: production ? '/bitcoin/' : '',
 		buildAssetsDir: '_nuxt/',
 		head: {
 			title: '비트코인 살껄',
@@ -35,7 +35,7 @@ export default defineNuxtConfig({
 		},
 	},
 	nitro: {
-		baseURL: production ? '/github.io/' : '',
+		baseURL: production ? '/bitcoin/' : '',
 		prerender: {
 			crawlLinks: true,
 			routes: ['/'],
