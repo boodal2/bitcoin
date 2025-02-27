@@ -83,10 +83,11 @@ useHead({
 	],
 });
 
+const baseURL = useRuntimeConfig().app?.baseURL;
 useSeoMeta({
 	ogTitle: '10년뒤 비트코인 가격은?',
 	ogDescription: '했제 할아버지 충격 근황',
-	ogImage: './grandfather-og-image.png',
+	ogImage: `${baseURL}grandfather-og-image.png`,
 });
 
 const columns = [

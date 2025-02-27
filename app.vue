@@ -13,17 +13,19 @@
 </template>
 
 <script setup lang="ts">
+const baseURL = useRuntimeConfig().app?.baseURL;
+
 const links = [
 	{
 		label: '비트코인 살껄',
 		avatar: {
-			src: './favicon.ico',
+			src: `${baseURL}favicon.ico`,
 		},
 		to: '/',
 	}, {
 		label: '했제 할아버지',
 		avatar: {
-			src: './grandfather.ico',
+			src: `${baseURL}grandfather.ico`,
 		},
 		to: '/forecast',
 	},

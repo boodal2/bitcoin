@@ -27,7 +27,7 @@ export default defineNuxtConfig({
 	},
 
 	app: {
-		baseURL: production ? '/bitcoin/' : '',
+		baseURL: production ? '/bitcoin/' : '/',
 		buildAssetsDir: '_nuxt/',
 		head: {
 			title: '비트코인 살껄',
