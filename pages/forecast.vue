@@ -85,8 +85,8 @@ useHead({
 
 useSeoMeta({
 	ogTitle: '10년뒤 비트코인 가격은?',
-	ogDescription: '미래에서 보는 했제 할아버지 충격 근황',
-	ogImage: '/og-image.png',
+	ogDescription: '했제 할아버지 충격 근황',
+	ogImage: './grandfather-og-image.png',
 });
 
 const columns = [

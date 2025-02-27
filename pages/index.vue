@@ -81,7 +81,7 @@ useHead({
 useSeoMeta({
 	ogTitle: '10년전에 비트코인 샀다면?',
 	ogDescription: '라고 할때 살껄!!',
-	ogImage: '/og-image.png',
+	ogImage: './og-image.png',
 });
 
 const columns = [
