@@ -8,14 +8,6 @@
 	<UNotifications />
 </template>
 
-<script setup lang="ts">
-useSeoMeta({
-	ogTitle: '10년전에 비트코인 샀다면?',
-	ogDescription: '매달 10만원씩 비트코인을 샀다면 얼마일까?',
-	ogImage: '/images/og-image.png',
-});
-</script>
-
 <style>
  * {
 	font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", 'Nanum Gothic';

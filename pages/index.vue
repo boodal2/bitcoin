@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<Parrot
+		<ParrotImage
 			:message="`${timeDifference}전에 살껄!!`"
 		/>
 		<div class="max-w-lg mx-auto p-3">
@@ -65,6 +65,23 @@
 
 <script setup lang="ts">
 import bitcoinPrices from '/public/db/bitcoin-prices.json';
+
+useHead({
+	title: '비트코인 살껄',
+	link: [
+		{
+			rel: 'icon',
+			type: 'image/x-icon',
+			href: 'favicon.ico',
+		},
+	],
+});
+
+useSeoMeta({
+	ogTitle: '10년전에 비트코인 샀다면?',
+	ogDescription: '라고 할때 살껄!!',
+	ogImage: '/og-image.png',
+});
 
 const columns = [
 	{
