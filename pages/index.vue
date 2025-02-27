@@ -13,6 +13,7 @@
 				<URange
 					v-model="fromDateStep"
 					color="orange"
+					:size="rangeSize"
 					:min="0"
 					:max="bitcoinPrices.length - 1"
 				/>
@@ -109,7 +110,6 @@ const fromDateStep = ref(bitcoinPrices.length - 1);
 const fromDateReverseStep = computed(() => bitcoinPrices.length - 1 - fromDateStep.value);
 const timeDifference = computed(() => calculateTimeDifference(bitcoinPrices[fromDateReverseStep.value].date));
 const nowBitcoinPrice = ref(bitcoinPrices[bitcoinPrices.length - 1].krw);
-
 const rows = computed(() => {
 	return bitcoinPrices.map((price) => {
 		// 소수점 8자리까지 표시
@@ -125,10 +125,21 @@ const rows = computed(() => {
 const totalBtc = computed(() => {
 	return rows.value.reduce((acc, row) => acc + Number(row.btc), 0).toFixed(8);
 });
+const rangeSize = ref('md');
 
 onMounted(async () => {
 	const res = await fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=KRW');
 	nowBitcoinPrice.value = await res.json().then(data => data.BTC.KRW);
+
+	if (window.innerWidth < 800) {
+		rangeSize.value = 'lg';
+	}
+	else if (window.innerWidth < 700) {
+		rangeSize.value = 'xl';
+	}
+	else if (window.innerWidth < 600) {
+		rangeSize.value = '2xl';
+	}
 });
 
 const calculateTimeDifference = (dateString: string) => {

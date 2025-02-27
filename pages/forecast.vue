@@ -189,7 +189,7 @@ main {
 	overflow-x: hidden;
 
 	.news {
-		margin: auto;
+		margin: 0 auto 15px;
 	}
 
 	.container {
