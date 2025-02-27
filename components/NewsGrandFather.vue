@@ -1,5 +1,8 @@
 <template>
-	<div class="contents">
+	<div
+		class="contents"
+		:style="{ transform: `scale(${scale})` }"
+	>
 		<img src="~/assets/images/grandfather1.png">
 		<div class="left-top">
 			<p class="red">
@@ -34,6 +37,8 @@
 				<span>
 					100억간다했제?
 				</span>
+
+				<slot name="bottom-right" />
 			</p>
 
 			<p />
@@ -43,6 +48,24 @@
 
 <script setup lang="ts">
 const time = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+const scale = ref(1);
+onMounted(() => {
+	resize();
+	window.addEventListener('resize', resize);
+});
+
+onUnmounted(() => {
+	window.removeEventListener('resize', resize);
+});
+
+function resize() {
+	if (window.innerWidth > 800) {
+		scale.value = 1;
+		return;
+	}
+
+	scale.value = window.innerWidth / 800;
+}
 </script>
 
 <style scoped lang="scss">
@@ -52,6 +75,7 @@ const time = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '
     height: 533px;
     position: relative;
     display: block;
+    transform-origin: center left;
 
     > img {
         width: 100%;

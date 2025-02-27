@@ -2,12 +2,19 @@
 	<main>
 		<NewsGrandFather
 			class="news"
-		/>
-		<div class="container">
+		>
+			<template #bottom-right>
+				<small class="text-right flex-1">
+					{{ futurePrices[futurePrices.length - 1].date }}
+					|
+					비트코인: {{ futurePrices[futurePrices.length - 1].krw.toLocaleString() }}원
+				</small>
+			</template>
+		</NewsGrandFather>
+		<div class="container max-w-xlg px-3 mx-auto">
 			<UFormGroup
 				label="매달 얼마씩 샀제"
-				:help="`총 ${futurePrices.length}개월간 ${formatKoreanCurrency(input * futurePrices.length)}원 주고 샀제`"
-				class="mb-5 max-w-xlg my-5 px-3 mx-auto "
+				class="mb-2"
 			>
 				<UInput
 					v-model="input"
@@ -19,16 +26,20 @@
 				</UInput>
 			</UFormGroup>
 
+			<p class="text-gray-500 dark:text-gray-400 text-sm">
+				총 {{ futurePrices.length }}개월간 {{ formatKoreanCurrency(input * futurePrices.length) }}원 주고 샀제
+				<br>
+				<br>
+				10년뒤, 비트코인 ₿{{ totalBtc }}개 보유 했제? (약 ￦{{ formatKoreanCurrency(totalBtc * futurePrices[futurePrices.length - 1].krw) }})
+			</p>
+
 			<UTable
 				:columns="columns"
 				:rows="futurePrices"
-				class=" max-w-xlg my-5 px-3 mx-auto "
+				class="my-5"
 			>
 				<template #caption>
 					<caption class="text-sm text-gray-500 dark:text-gray-400 mb-3 text-left">
-						10년뒤, 비트코인 ₿{{ totalBtc }}개 보유 했제? (약 ￦{{ formatKoreanCurrency(totalBtc * futurePrices[futurePrices.length - 1].krw) }})
-						<br>
-						<br>
 						<small>
 							(해당 데이터는 과거 10년간 데이터 변동률로 예측한 데이터입니다)
 						</small>
